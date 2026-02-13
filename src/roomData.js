@@ -40,7 +40,7 @@ export const ROOM_OBSERVATIONS = {
   },
   dining: {
     summary: "Generous space connected to living room and kitchen. Floor-to-ceiling windows with wood frames and deck access. Currently carpeted with a modest table — this room is ready for the large hosting table you want.",
-    whatsGood: ["Big windows with deck access — great natural light and indoor-outdoor flow", "Open sightline to living room creates a cohesive entertaining zone", "Existing chandelier is actually MCM-adjacent", "Room easily handles an 84–96\" table with clearance"],
+    whatsGood: ["Big windows with deck access — great natural light and indoor-outdoor flow", "Open sightline to living room creates a cohesive entertaining zone", "Existing chandelier is actually MCM-adjacent", "Room easily handles an 84–96″ table with clearance"],
     whatsDateOr: ["Carpet is the biggest issue — needs hardwood to match kitchen flow", "Existing bookshelf unit crowds the space — remove and let the room breathe", "Wall color is neutral but could take something warmer or bolder"],
     verdict: "Flooring first, then the table. Once you have hardwood continuous from kitchen through dining, the room transforms. The big table becomes the anchor.",
     priority: "Planning",
@@ -89,7 +89,7 @@ export const ROOM_OBSERVATIONS = {
   primary_wic: {
     summary: "Modest walk-in at 47 sq ft. With a king bed and two wardrobes worth of clothing, a closet system is essential, not optional.",
     whatsGood: ["Dedicated walk-in is better than a reach-in"],
-    whatsDateOr: ["At 7'9\" × 6'0\", every inch needs to be planned", "Likely needs a closet organizer system (Elfa, IKEA PAX, or custom)"],
+    whatsDateOr: ["At 7'9″ × 6'0″, every inch needs to be planned", "Likely needs a closet organizer system (Elfa, IKEA PAX, or custom)"],
     verdict: "Measure on move-in day and order a closet system immediately. This is one of the first functional purchases. Could also house a Litter-Robot if you add ventilation.",
     priority: "Planning",
     suggestedPalettes: [],
@@ -146,7 +146,7 @@ export const ROOM_OBSERVATIONS = {
     summary: "172 sq ft, light grey walls, carpet, single window with a view. Currently a blank room with oak baseboard trim. Clean canvas for your command center — desk + gaming + convertible couch for occasional guests.",
     whatsGood: ["Clean blank slate — no dated features to work around", "Window on the short wall means desk on long wall avoids monitor glare", "Oak baseboard trim matches the house", "Decent natural light for a lower level room"],
     whatsDateOr: ["Carpet — consider hard flooring for an office chair", "No architectural features — needs furniture to create identity"],
-    verdict: "72\"+ desk on the long wall facing perpendicular to the window. Gaming + work dual-monitor setup. Daybed or MCM chaise on the opposite wall for crash flexibility. The closet can house a Litter-Robot or extra storage.",
+    verdict: "72″+ desk on the long wall facing perpendicular to the window. Gaming + work dual-monitor setup. Daybed or MCM chaise on the opposite wall for crash flexibility. The closet can house a Litter-Robot or extra storage.",
     priority: "In Progress",
     suggestedPalettes: ["Moody Library", "Bold Contrast", "Warm Walnut"],
   },
@@ -261,16 +261,16 @@ export const ROOM_FEATURES = {
 
 export const FURNITURE_PRESETS = {
   living: ["Sofa", "Ball Chair ✦", "Coffee Table", "Media Console / Credenza", "Arc Floor Lamp", "Area Rug (8×10)", "Accent Chairs (pair)"],
-  dining: ["Dining Table (84–96\")", "Dining Chairs (set of 8–10)", "Sideboard / Credenza", "Bar Cart", "Statement Pendant Light", "Area Rug"],
+  dining: ["Dining Table (84–96″)", "Dining Chairs (set of 8–10)", "Sideboard / Credenza", "Bar Cart", "Statement Pendant Light", "Area Rug"],
   kitchen: ["Counter Stools", "Pendant Lights", "Open Shelf Display"],
-  breakfast: ["Round Table (42–48\")", "MCM Chairs (2–4)", "Pendant Light"],
+  breakfast: ["Round Table (42–48″)", "MCM Chairs (2–4)", "Pendant Light"],
   foyer: ["Console Table", "Large Mirror or Art", "Bench with Storage", "Statement Pendant", "Runner Rug"],
-  primary_bed: ["King Platform Bed Frame", "Slim Nightstands (pair, 18–22\")", "Dresser", "Table Lamps", "Area Rug (8×10)", "Blackout Curtains"],
+  primary_bed: ["King Platform Bed Frame", "Slim Nightstands (pair, 18–22″)", "Dresser", "Table Lamps", "Area Rug (8×10)", "Blackout Curtains"],
   family: ["Sectional Sofa", "Entertainment Center", "Coffee Table", "Bar Cabinet + Stools", "Accent Chairs", "Floor Lamps", "Area Rugs (zoning)", "Bookshelves"],
   rec: ["TBD — Define Purpose First", "Lounge Seating", "Game Table", "Sound System", "Accent Lighting"],
-  aakesh_office: ["L-Desk or 72\"+ Desk", "Ergonomic Chair", "Dual Monitor Arms", "MCM Daybed / Convertible Couch", "Bookshelves", "Sound Panels", "Cable Management"],
-  ashton_office: ["Murphy Bed (Queen)", "Desk (48–60\")", "Ergonomic Chair", "Monitor Arm", "Bookshelf (video backdrop)", "File Storage", "Desk + Task Lamp"],
-  deck: ["Blackstone Griddle (36\")", "Prep Cart / Table", "Outdoor Dining Set", "Tool Storage"],
+  aakesh_office: ["L-Desk or 72″+ Desk", "Ergonomic Chair", "Dual Monitor Arms", "MCM Daybed / Convertible Couch", "Bookshelves", "Sound Panels", "Cable Management"],
+  ashton_office: ["Murphy Bed (Queen)", "Desk (48–60″)", "Ergonomic Chair", "Monitor Arm", "Bookshelf (video backdrop)", "File Storage", "Desk + Task Lamp"],
+  deck: ["Blackstone Griddle (36″)", "Prep Cart / Table", "Outdoor Dining Set", "Tool Storage"],
   storage: ["TBD — Assess In Person First"],
 };
 
@@ -295,7 +295,7 @@ export const ACTION_PLAN = [
     { task: "Finalize dining table selection — need dimensions to plan room", room: "dining", priority: "high" },
     { task: "Shop for living room furniture — sofa, coffee table to complement ball chair and fireplace", room: "living", priority: "high" },
     { task: "Order Murphy bed for Ashton's office", room: "ashton_office", priority: "medium" },
-    { task: "Research Blackstone griddle setup — 28\" vs 36\", prep cart options", room: "deck", priority: "medium" },
+    { task: "Research Blackstone griddle setup — 28″ vs 36″, prep cart options", room: "deck", priority: "medium" },
     { task: "Assess flex space condition in person — finished, partial, or raw?", room: "storage", priority: "low" },
     { task: "Order king platform bed frame if needed", room: "primary_bed", priority: "high" },
   ]},
