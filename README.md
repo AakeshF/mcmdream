@@ -1,4 +1,4 @@
-# ◈ Home Design Planner — MCM Edition
+# ◈ Home Design Planner — MCM Dream
 
 Interactive room-by-room design planner for a 3,129 sq ft mid-century modern home.
 Built with React + Vite, hosted on GitHub Pages.
@@ -22,43 +22,6 @@ npm run dev
 ```
 
 Opens at `http://localhost:5173/home-design-planner/`
-
-## Deploy to GitHub Pages
-
-### First time setup:
-
-1. Create a new repo on GitHub called `home-design-planner`
-
-2. Push this code:
-```bash
-git init
-git add .
-git commit -m "initial commit"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/home-design-planner.git
-git push -u origin main
-```
-
-3. Deploy:
-```bash
-npm run deploy
-```
-
-4. In your GitHub repo → Settings → Pages → Source should be set to `gh-pages` branch
-
-5. Your site will be live at:
-```
-https://YOUR_USERNAME.github.io/home-design-planner/
-```
-
-### Updating:
-
-After making changes:
-```bash
-git add .
-git commit -m "update description"
-npm run deploy
-```
 
 ## Customization
 
