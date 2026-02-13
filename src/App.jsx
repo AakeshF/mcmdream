@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { ROOMS, ROOM_OBSERVATIONS, ROOM_FEATURES, FURNITURE_PRESETS, ACTION_PLAN, MCM_PALETTES, FURNITURE_PIECES, DESIGN_THEMES, PRIORITIES, PRIORITY_COLORS } from "./roomData.js";
+import { LISTING_PHOTOS } from "./photos.js";
 
 function hexToHSL(hex){let r=parseInt(hex.slice(1,3),16)/255,g=parseInt(hex.slice(3,5),16)/255,b=parseInt(hex.slice(5,7),16)/255;const max=Math.max(r,g,b),min=Math.min(r,g,b);let h,s,l=(max+min)/2;if(max===min){h=s=0}else{const d=max-min;s=l>0.5?d/(2-max-min):d/(max+min);switch(max){case r:h=((g-b)/d+(g<b?6:0))/6;break;case g:h=((b-r)/d+2)/6;break;case b:h=((r-g)/d+4)/6;break}}return[h*360,s*100,l*100]}
 function hslToHex(h,s,l){h/=360;s/=100;l/=100;let r,g,b;if(s===0){r=g=b=l}else{const q=l<0.5?l*(1+s):l+s-l*s,p=2*l-q;const f=(p,q,t)=>{if(t<0)t+=1;if(t>1)t-=1;if(t<1/6)return p+(q-p)*6*t;if(t<1/2)return q;if(t<2/3)return p+(q-p)*(2/3-t)*6;return p};r=f(p,q,h+1/3);g=f(p,q,h);b=f(p,q,h-1/3)}return"#"+[r,g,b].map(x=>Math.round(x*255).toString(16).padStart(2,"0")).join("")}
@@ -81,9 +82,13 @@ function Photos({roomId,photos,onChange}){
   const ref=useRef(null);
   const add=(e)=>{Array.from(e.target.files).forEach(file=>{const r=new FileReader();r.onload=(ev)=>{const img=new Image();img.onload=()=>{const c=document.createElement("canvas");const M=800;let w=img.width,h=img.height;if(w>M||h>M){if(w>h){h=h*M/w;w=M}else{w=w*M/h;h=M}}c.width=w;c.height=h;c.getContext("2d").drawImage(img,0,0,w,h);const d=c.toDataURL("image/jpeg",0.7);onChange({...photos,[roomId]:[...(photos[roomId]||[]),d]})};img.src=ev.target.result};r.readAsDataURL(file)});e.target.value=""};
   const rm=(i)=>onChange({...photos,[roomId]:(photos[roomId]||[]).filter((_,j)=>j!==i)});
+  const listing=LISTING_PHOTOS[roomId]||[];
+  const userPhotos=photos[roomId]||[];
   return<div>
+    {listing.length>0&&<div style={{marginBottom:"14px"}}><div style={{fontFamily:F.mono,fontSize:"10px",letterSpacing:"1.5px",color:C.muted,marginBottom:"8px"}}>LISTING PHOTOS</div><div style={{display:"flex",gap:"8px",flexWrap:"wrap"}}>{listing.map((url,i)=><div key={`l${i}`} style={{width:"180px",height:"120px"}}><img src={url} alt="" style={{width:"100%",height:"100%",objectFit:"cover",border:`1px solid ${C.border}`}}/></div>)}</div></div>}
+    <div style={{fontFamily:F.mono,fontSize:"10px",letterSpacing:"1.5px",color:C.muted,marginBottom:"8px"}}>{userPhotos.length>0?"YOUR PHOTOS":"ADD YOUR PHOTOS"}</div>
     <div style={{display:"flex",gap:"8px",flexWrap:"wrap",marginBottom:"10px"}}>
-      {(photos[roomId]||[]).map((url,i)=><div key={i} style={{position:"relative",width:"140px",height:"95px"}}><img src={url} alt="" style={{width:"100%",height:"100%",objectFit:"cover",border:`1px solid ${C.border}`}}/><button onClick={()=>rm(i)} style={{position:"absolute",top:"2px",right:"2px",background:"rgba(0,0,0,0.6)",color:"#FFF",border:"none",cursor:"pointer",width:"18px",height:"18px",fontSize:"11px",padding:0}}>{"\u00d7"}</button></div>)}
+      {userPhotos.map((url,i)=><div key={i} style={{position:"relative",width:"140px",height:"95px"}}><img src={url} alt="" style={{width:"100%",height:"100%",objectFit:"cover",border:`1px solid ${C.border}`}}/><button onClick={()=>rm(i)} style={{position:"absolute",top:"2px",right:"2px",background:"rgba(0,0,0,0.6)",color:"#FFF",border:"none",cursor:"pointer",width:"18px",height:"18px",fontSize:"11px",padding:0}}>{chr(215)}</button></div>)}
       <div onClick={()=>ref.current?.click()} style={{width:"140px",height:"95px",border:`2px dashed ${C.border}`,display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",color:C.muted,fontFamily:F.mono,fontSize:"11px"}} onMouseEnter={e=>e.currentTarget.style.borderColor=C.accent} onMouseLeave={e=>e.currentTarget.style.borderColor=C.border}>+ Add Photo</div>
     </div>
     <input ref={ref} type="file" accept="image/*" multiple onChange={add} style={{display:"none"}}/>
@@ -185,7 +190,7 @@ export default function App(){
     <main style={{padding:"28px",maxWidth:"1200px",margin:"0 auto"}}>
       {view==="rooms"&&!ar&&<div>
         <div style={{display:"flex",gap:"0",marginBottom:"28px"}}>{Object.keys(ROOMS).map(f=><button key={f} onClick={()=>setAF(f)} style={{fontFamily:F.mono,fontSize:"12px",letterSpacing:"1px",padding:"12px 20px",cursor:"pointer",background:af===f?C.dark:"transparent",color:af===f?C.bg:C.dark,border:`1.5px solid ${C.dark}`}}>{f}</button>)}</div>
-        <div className="rg" style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",gap:"14px"}}>{ROOMS[af].map((r,i)=><RoomCard key={r.id} room={r} data={rd[r.id]} index={i} photoUrl={(photos[r.id]||[])[0]} onClick={()=>{setAR(r.id);setView("detail");setDT("observe")}}/>)}</div>
+        <div className="rg" style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",gap:"14px"}}>{ROOMS[af].map((r,i)=><RoomCard key={r.id} room={r} data={rd[r.id]} index={i} photoUrl={(photos[r.id]||[])[0]||(LISTING_PHOTOS[r.id]||[])[0]} onClick={()=>{setAR(r.id);setView("detail");setDT("observe")}}/>)}</div>
       </div>}
 
       {view==="detail"&&room&&data&&<div style={{animation:"fi 0.3s ease forwards"}}>
